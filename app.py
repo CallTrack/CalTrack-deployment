@@ -28,9 +28,11 @@ def predict_image(IMG_PATH):
 
     images = np.vstack([x])
     classes = model.predict(images, batch_size=10)
+    
+    results = classes.flatten()
 
-    for (label, c) in zip(labels, classes):
-        if (c == 1):
+    for (label, result) in zip(labels, results):
+        if (result == 1):
             return label
     
 
